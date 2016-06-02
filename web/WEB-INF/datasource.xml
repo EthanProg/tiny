@@ -5,7 +5,7 @@
         <property name="appName" value="lambo"/>
         <property name="DbGroupKey" value="groupKey00"/>
     </bean>
-    <bean id="multipleDataSource" class="com.inspur.lambo.framework.mvc.MultipleDataSource">
+    <bean id="multipleDataSource" class="com.eco.pub.multidatasource.MultipleDataSource">
         <property name="defaultTargetDataSource" ref="dataSource"/>
         <property name="targetDataSources">
             <map>
