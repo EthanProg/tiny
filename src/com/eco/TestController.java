@@ -1,9 +1,14 @@
 package com.eco;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 类描述：
@@ -14,8 +19,19 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class TestController {
 
-    @RequestMapping("/test")
-    public String test(HttpServletRequest req){
+    private static Log log = LogFactory.getLog(TestController.class);
+
+    @RequestMapping("/test1")
+    public String test1(HttpServletRequest req){
         return "test";
+    }
+
+    @RequestMapping("/test2")
+    @ResponseBody
+    public Map test2(HttpServletRequest req){
+        log.debug("just for test");
+        Map resMap = new HashMap();
+        resMap.put("key","1");
+        return resMap;
     }
 }
