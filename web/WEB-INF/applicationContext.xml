@@ -37,4 +37,37 @@
         <property name="basePackage" value="com.eco.*" />
     </bean>
 
+    <!-- Transaction Manager -->
+    <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="multipleDataSource"></property>
+        <property name="globalRollbackOnParticipationFailure" value="false" />
+    </bean>
+    <!-- Declarative transactions with annotation -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!-- Declarative transactions with method prefix -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="save*" propagation="REQUIRED" />
+            <tx:method name="insert*" propagation="REQUIRED" />
+            <tx:method name="delete*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" />
+        </tx:attributes>
+    </tx:advice>
+    <!-- aspect configuration -->
+    <aop:config>
+        <aop:pointcut id="serviceOperation"	expression="execution(* com.eco..*.service..*(..))" />
+        <aop:advisor advice-ref="txAdvice"	pointcut-ref="serviceOperation" />
+    </aop:config>
+
+    <!-- 激活@Aspect注解支持 -->
+    <aop:aspectj-autoproxy/>
+    <!-- 激活annotation功能 -->
+    <context:annotation-config />
+    <!-- 激活annotation功能 -->
+    <context:spring-configured/>
+    <!-- 定时器 -->
+    <task:annotation-driven />
+
+    <!-- 根据beanName获取bean实例的工具类 -->
+    <bean id="springContextUtil" class="com.eco.pub.utils.SpringContextUtil" lazy-init="false"/>
 </beans>
