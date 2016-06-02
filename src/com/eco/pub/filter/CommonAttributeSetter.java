@@ -42,10 +42,11 @@ public class CommonAttributeSetter implements Filter {
         filterConfig = null;
     }
 
-    public void doFilter(ServletRequest req, ServletResponse resp,
-                         FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest req, ServletResponse resp,FilterChain chain) throws IOException, ServletException {
+
         // 将上下文根写入request，方便在页面上的使用
         String contextPath = ((HttpServletRequest) req).getSession().getServletContext().getContextPath();
+
         req.setAttribute("ctx", contextPath);
 
         // 将首页的url写入request中，方便页面组织面包屑导航
