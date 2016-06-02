@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import com.eco.pub.aspect.annotation.LogAround;
 import org.apache.log4j.Logger;
 
-import com.eco.pub.filter.AuthExcludeFlagHolder;
-
-
 /**
  * 权限认证过滤器
  * 此过滤器用于给url进行标记，以区分哪些url需要进行权限认证拦截，哪些不需要
