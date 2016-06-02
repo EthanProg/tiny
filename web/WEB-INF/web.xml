@@ -13,14 +13,14 @@
     </context-param>
 
     <!-- sitemesh module -->
-    <filter>
-        <filter-name>sitemesh</filter-name>
-        <filter-class>org.sitemesh.config.ConfigurableSiteMeshFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>sitemesh</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    <!--<filter>-->
+        <!--<filter-name>sitemesh</filter-name>-->
+        <!--<filter-class>org.sitemesh.config.ConfigurableSiteMeshFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>sitemesh</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
 
     <!-- CharacterEncodingFilter类具有encoding和forceEncoding两个属性，
         其中encoding是表示设置request的编码，forceEncoding表示是否同时设置response的编码。
