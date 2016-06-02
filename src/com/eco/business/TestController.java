@@ -1,7 +1,8 @@
-package com.eco;
+package com.eco.business;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +22,9 @@ public class TestController {
 
     private static Log log = LogFactory.getLog(TestController.class);
 
+    @Autowired
+    private TestMapper testMapper;
+
     @RequestMapping("/test1")
     public String test1(HttpServletRequest req){
         return "test";
@@ -32,6 +36,7 @@ public class TestController {
         log.debug("just for test");
         Map resMap = new HashMap();
         resMap.put("key","1");
+        resMap.put("users",testMapper.getUsers(new HashMap()));
         return resMap;
     }
 }

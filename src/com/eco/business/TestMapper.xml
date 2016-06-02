@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eco.business.TestMapper">
+    <select id="getUsers" parameterType="map" resultType="map">
+        SELECT ORG_CODE,USER_ID,USER_NAME,SHOP_ID,TENANT_ID,USER_GROUP,PASS_WRD,ACCOUNT_TYPE 
+        FROM CA_USERS
+    </select>
+</mapper>
