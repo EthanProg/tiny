@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+  	<mapping path="/" decorator="/WEB-INF/decorators/layout.jsp"/>
+	<mapping path="/index.jsp" exclude="true"/>
+	<mapping path="/jsp/sso.jsp" exclude="true"/>
+	<mapping path="/login" exclude="true"/>
+	<mapping path="/login/*" exclude="true"/>
+	<mapping path="/stlogin" exclude="true"/>
+	<mapping path="/stlogin/*" exclude="true"/>
+	<mapping path="/services/*" exclude="true"/>
+	<mapping path="/axis2-admin/*" exclude="true"/>
+	<mapping path="/openApi/*" exclude="true"/>
+	<mapping path="/sttokenconsumer" exclude="true"/>
+	<mapping path="/htm/*" exclude="true"/>
+	<mapping path="*.jws" exclude="true"/>
+	<mapping path="/system/*" decorator="/WEB-INF/decorators/layout.jsp"/>
+</sitemesh>
