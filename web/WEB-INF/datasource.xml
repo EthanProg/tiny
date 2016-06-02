@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="dataSource" class="com.taobao.tddl.group.jdbc.TGroupDataSource" init-method="init">
+        <property name="appName" value="lambo"/>
+        <property name="DbGroupKey" value="groupKey00"/>
+    </bean>
+    <bean id="multipleDataSource" class="com.inspur.lambo.framework.mvc.MultipleDataSource">
+        <property name="defaultTargetDataSource" ref="dataSource"/>
+        <property name="targetDataSources">
+            <map>
+                <entry key="defaultDataSource" value-ref="dataSource"/>
+            </map>
+        </property>
+    </bean>
+</beans>
