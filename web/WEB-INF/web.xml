@@ -4,13 +4,60 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <display-name>tiny_framework</display-name>
+
+    <!-- spring application context -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>
     </context-param>
+
+    <!-- sitemesh module -->
+    <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>org.sitemesh.config.ConfigurableSiteMeshFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>sitemesh</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- CharacterEncodingFilter类具有encoding和forceEncoding两个属性，
+        其中encoding是表示设置request的编码，forceEncoding表示是否同时设置response的编码。
+    -->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- spring context listener -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+
+    <!--spring中的提供了一个名为org.springframework.web.util.IntrospectorCleanupListener的监听器。
+        它主要负责处理由　JavaBeans Introspector的使用而引起的缓冲泄露。spring中对它的描述如下：
+        它是一个在web应用关闭的时候,清除JavaBeans Introspector的监听器.在web.xml中注册这个listener.
+        可以保证在web 应用关闭的时候释放与掉这个web 应用相关的class loader 和由它管理的类。
+        用程序中的类从来不直接使用JavaBeans Introspector.所以他们一般不会导致内部查看资源泄露.
+        但是一些类库和框架往往会产生这个问题.例如:Struts 和Quartz.
+    -->
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -19,5 +66,15 @@
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!-- alibaba druid监控 通过/druid/index.html监控数据源 -->
+    <servlet>
+        <servlet-name>DruidStatView</servlet-name>
+        <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DruidStatView</servlet-name>
+        <url-pattern>/druid/*</url-pattern>
     </servlet-mapping>
 </web-app>
