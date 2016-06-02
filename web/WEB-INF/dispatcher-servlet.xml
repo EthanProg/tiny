@@ -40,4 +40,11 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.eco.pub.inteceptor.AuthInteceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>
