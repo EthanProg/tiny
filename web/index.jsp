@@ -1,3 +1,3 @@
 <script>
-    window.location.href="${ctx}/test1";
+    window.location.href="${ctx}/login";
 </script>
