@@ -6,15 +6,10 @@
         <setting name="lazyLoadingEnabled" value="false"/>
         <setting name="callSettersOnNulls" value="true"/>
     </settings>
-    <!--<plugins>-->
-        <!--&lt;!&ndash; 物理分页,支持mysql、oracle、db2、mssql12、mssql58 &ndash;&gt;-->
-        <!--<plugin interceptor="com.inspur.lambo.framework.interceptor.PaginationInterceptor">-->
-            <!--<property name="dialect" value="mysql"/>-->
-        <!--</plugin>-->
-        <!--&lt;!&ndash; SQL监控功能 &ndash;&gt;-->
-        <!--<plugin interceptor="com.inspur.lambo.framework.interceptor.monitor.SqlMonitorPlugin">-->
-            <!--<property name="enable" value="true"/>-->
-        <!--</plugin>-->
-    <!--</plugins>-->
+    <plugins>
+        <plugin interceptor="com.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor">
+            <property name="dialectClass" value="com.github.miemiedev.mybatis.paginator.dialect.MySQLDialect"/>
+        </plugin>
+    </plugins>
     <mappers></mappers>
 </configuration>
