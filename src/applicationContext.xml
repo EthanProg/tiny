@@ -29,7 +29,7 @@
     <!-- Mybatis sqlSessionFactory and configuration -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="multipleDataSource"></property>
-        <property name="configLocation" value="/WEB-INF/mybatis-config.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
     <!-- Automatically scan dao interface and its corresponding xml file -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
