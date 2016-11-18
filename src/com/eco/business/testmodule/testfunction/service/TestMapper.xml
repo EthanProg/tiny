@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.eco.business.testmodule.testfunction.service.TestMapper">
     <select id="getUsers" parameterType="map" resultType="map">
-        SELECT ORG_CODE,USER_ID,USER_NAME,SHOP_ID,TENANT_ID,USER_GROUP,PASS_WRD,ACCOUNT_TYPE 
+        SELECT ORG_CODE,USER_ID,USER_NAME,SHOP_ID,TENANT_ID,PASS_WRD,ACCOUNT_TYPE
         FROM CA_USERS
     </select>
 </mapper>
